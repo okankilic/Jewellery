@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JewelleryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="JewelleryDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Account" EntityType="JewelleryDBModel.Account" />
+    <EntitySet Name="Attachment" EntityType="JewelleryDBModel.Attachment" />
+    <EntitySet Name="Order" EntityType="JewelleryDBModel.Order" />
+    <EntitySet Name="OrderState" EntityType="JewelleryDBModel.OrderState" />
+    <EntitySet Name="Product" EntityType="JewelleryDBModel.Product" />
+    <EntitySet Name="sysdiagrams" EntityType="JewelleryDBModel.sysdiagrams" />
+    <EntitySet Name="Token" EntityType="JewelleryDBModel.Token" />
+    <EntitySet Name="OrderHistory" EntityType="JewelleryDBModel.OrderHistory" />
+    <AssociationSet Name="FK_Order_Account" Association="JewelleryDBModel.FK_Order_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_ResponsibleAccount" Association="JewelleryDBModel.FK_Order_ResponsibleAccount">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderState_FromAccount" Association="JewelleryDBModel.FK_OrderState_FromAccount">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="OrderState" EntitySet="OrderState" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderState_ToAccount" Association="JewelleryDBModel.FK_OrderState_ToAccount">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="OrderState" EntitySet="OrderState" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Token_Account" Association="JewelleryDBModel.FK_Token_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Token" EntitySet="Token" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Attachment_Product" Association="JewelleryDBModel.FK_Attachment_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Attachment" EntitySet="Attachment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Product" Association="JewelleryDBModel.FK_Order_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderHistory_Order" Association="JewelleryDBModel.FK_OrderHistory_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderHistory" EntitySet="OrderHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderState_Order" Association="JewelleryDBModel.FK_OrderState_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderState" EntitySet="OrderState" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MobilePhone" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Order" Relationship="JewelleryDBModel.FK_Order_Account" FromRole="Account" ToRole="Order" />
+    <NavigationProperty Name="Order1" Relationship="JewelleryDBModel.FK_Order_ResponsibleAccount" FromRole="Account" ToRole="Order" />
+    <NavigationProperty Name="OrderState" Relationship="JewelleryDBModel.FK_OrderState_FromAccount" FromRole="Account" ToRole="OrderState" />
+    <NavigationProperty Name="OrderState1" Relationship="JewelleryDBModel.FK_OrderState_ToAccount" FromRole="Account" ToRole="OrderState" />
+    <NavigationProperty Name="Token" Relationship="JewelleryDBModel.FK_Token_Account" FromRole="Account" ToRole="Token" />
+  </EntityType>
+  <EntityType Name="Attachment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="FilePath" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Product" Relationship="JewelleryDBModel.FK_Attachment_Product" FromRole="Attachment" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="AccountId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="OrderTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ResponsibleAccountId" Type="Int32" />
+    <Property Name="OrderState" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Account" Relationship="JewelleryDBModel.FK_Order_Account" FromRole="Order" ToRole="Account" />
+    <NavigationProperty Name="Account1" Relationship="JewelleryDBModel.FK_Order_ResponsibleAccount" FromRole="Order" ToRole="Account" />
+    <NavigationProperty Name="Product" Relationship="JewelleryDBModel.FK_Order_Product" FromRole="Order" ToRole="Product" />
+    <NavigationProperty Name="OrderHistory" Relationship="JewelleryDBModel.FK_OrderHistory_Order" FromRole="Order" ToRole="OrderHistory" />
+    <NavigationProperty Name="OrderState1" Relationship="JewelleryDBModel.FK_OrderState_Order" FromRole="Order" ToRole="OrderState" />
+  </EntityType>
+  <EntityType Name="OrderState">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="FromAccountId" Type="Int32" Nullable="false" />
+    <Property Name="ToAccountId" Type="Int32" Nullable="false" />
+    <Property Name="OrderState1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Account" Relationship="JewelleryDBModel.FK_OrderState_FromAccount" FromRole="OrderState" ToRole="Account" />
+    <NavigationProperty Name="Account1" Relationship="JewelleryDBModel.FK_OrderState_ToAccount" FromRole="OrderState" ToRole="Account" />
+    <NavigationProperty Name="Order" Relationship="JewelleryDBModel.FK_OrderState_Order" FromRole="OrderState" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Attachment" Relationship="JewelleryDBModel.FK_Attachment_Product" FromRole="Product" ToRole="Attachment" />
+    <NavigationProperty Name="Order" Relationship="JewelleryDBModel.FK_Order_Product" FromRole="Product" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountId" Type="Int32" Nullable="false" />
+    <Property Name="TokenString" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Account" Relationship="JewelleryDBModel.FK_Token_Account" FromRole="Token" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="OrderHistory">
+    <Key>
+      <PropertyRef Name="HID" />
+    </Key>
+    <Property Name="HID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="AccountId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="ResponsibleAccountId" Type="Int32" />
+    <Property Name="OrderState" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Order" Relationship="JewelleryDBModel.FK_OrderHistory_Order" FromRole="OrderHistory" ToRole="Order" />
+  </EntityType>
+  <Association Name="FK_Order_Account">
+    <End Type="JewelleryDBModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="JewelleryDBModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_ResponsibleAccount">
+    <End Type="JewelleryDBModel.Account" Role="Account" Multiplicity="0..1" />
+    <End Type="JewelleryDBModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ResponsibleAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderState_FromAccount">
+    <End Type="JewelleryDBModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="JewelleryDBModel.OrderState" Role="OrderState" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderState">
+        <PropertyRef Name="FromAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderState_ToAccount">
+    <End Type="JewelleryDBModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="JewelleryDBModel.OrderState" Role="OrderState" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderState">
+        <PropertyRef Name="ToAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Token_Account">
+    <End Type="JewelleryDBModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="JewelleryDBModel.Token" Role="Token" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Token">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Attachment_Product">
+    <End Type="JewelleryDBModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="JewelleryDBModel.Attachment" Role="Attachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Attachment">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Product">
+    <End Type="JewelleryDBModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="JewelleryDBModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderHistory_Order">
+    <End Type="JewelleryDBModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="JewelleryDBModel.OrderHistory" Role="OrderHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderHistory">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderState_Order">
+    <End Type="JewelleryDBModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="JewelleryDBModel.OrderState" Role="OrderState" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderState">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

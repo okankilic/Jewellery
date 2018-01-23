@@ -1,0 +1,96 @@
+﻿@model Jewellery.Data.Common.Models.OrderDTO
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">Çalışan Ata</h4>
+</div>
+@using (Html.BeginForm("ChangeState", "Order", FormMethod.Post)) {
+
+    @Html.AntiForgeryToken()
+
+    <div class="modal-body">
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.AccountId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AccountFullName, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    <p class="form-control-static">@Model.AccountFullName</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    <p class="form-control-static">@Model.ProductName</p>
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.ProductDescription, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    <p class="form-control-static">@Model.ProductDescription</p>
+                </div>
+            </div>*@
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    <p class="form-control-static">@Model.Price</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    <p class="form-control-static">@Model.Quantity</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OrderTime, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    <p class="form-control-static">@Model.OrderTime</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OrderState, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    <p class="form-control-static">@Model.OrderState</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ResponsibleAccountId, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.DropDownListFor(m => m.ResponsibleAccountId, Jewellery.Presentation.WebUI.Helpers.SelectHelper.GetAccountList(Model.OrderState), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ResponsibleAccountId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input type="submit" value="Kaydet" class="btn btn-default" />
+    </div>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

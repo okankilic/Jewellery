@@ -1,0 +1,9 @@
+C:\Workspace\GIT\Jewellery\Jewellery\JewelleryDB\bin\Debug\JewelleryDB.dacpac
+C:\Workspace\GIT\Jewellery\Jewellery\JewelleryDB\bin\Debug\JewelleryDB.dll
+C:\Workspace\GIT\Jewellery\Jewellery\JewelleryDB\bin\Debug\JewelleryDB.pdb
+C:\Workspace\GIT\Jewellery\Jewellery\JewelleryDB\obj\Debug\JewelleryDB.dll
+C:\Workspace\GIT\Jewellery\Jewellery\JewelleryDB\obj\Debug\JewelleryDB.pdb
+C:\Workspace\GIT\Jewellery\Jewellery\JewelleryDB\obj\Debug\Model.xml
+C:\Workspace\GIT\Jewellery\Jewellery\JewelleryDB\obj\Debug\refactor.xml
+C:\Workspace\GIT\Jewellery\Jewellery\JewelleryDB\obj\Debug\postdeploy.sql
+C:\Workspace\GIT\Jewellery\Jewellery\JewelleryDB\obj\Debug\predeploy.sql
