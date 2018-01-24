@@ -11,5 +11,11 @@ namespace Jewellery.Presentation.WebUI.Models
         [Required(ErrorMessage = "Lütfen adınızı ve soyadınızı giriniz")]
         [Display(Name = "Ad Soyad")]
         public string FullName { get; set; }
+
+        [Display(Name = "Şifre (Tekrar)")]
+        [Compare("Password")]
+        [Required(ErrorMessage = "Lütfen şifrenizi tekrar giriniz")]
+        [DataType(DataType.Password)]
+        public string RePassword { get; set; }
     }
 }

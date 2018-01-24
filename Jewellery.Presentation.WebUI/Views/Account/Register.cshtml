@@ -41,6 +41,11 @@
                             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
+                            @Html.LabelFor(m => m.RePassword)
+                            @Html.PasswordFor(m => m.RePassword, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.RePassword, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
                             <button type="submit" class="btn btn-default btn-block">Gönder</button>
                         </div>
                     }
