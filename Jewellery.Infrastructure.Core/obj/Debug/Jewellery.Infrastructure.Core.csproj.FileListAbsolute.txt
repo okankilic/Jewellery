@@ -1,6 +1,5 @@
 C:\Workspace\GIT\Jewellery\Jewellery\Jewellery.Infrastructure.Core\bin\Debug\Jewellery.Infrastructure.Core.dll
 C:\Workspace\GIT\Jewellery\Jewellery\Jewellery.Infrastructure.Core\bin\Debug\Jewellery.Infrastructure.Core.pdb
-C:\Workspace\GIT\Jewellery\Jewellery\Jewellery.Infrastructure.Core\obj\Debug\Jewellery.Infrastructure.Core.csprojResolveAssemblyReference.cache
 C:\Workspace\GIT\Jewellery\Jewellery\Jewellery.Infrastructure.Core\obj\Debug\Jewellery.Infrastructure.Core.csproj.CoreCompileInputs.cache
 C:\Workspace\GIT\Jewellery\Jewellery\Jewellery.Infrastructure.Core\obj\Debug\Jewellery.Infrastructure.Core.dll
 C:\Workspace\GIT\Jewellery\Jewellery\Jewellery.Infrastructure.Core\obj\Debug\Jewellery.Infrastructure.Core.pdb
@@ -42,3 +41,4 @@ C:\Workspace\GIT\Jewellery\Jewellery\Jewellery.Infrastructure.Core\bin\Debug\Mic
 C:\Workspace\GIT\Jewellery\Jewellery\Jewellery.Infrastructure.Core\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
 C:\Workspace\GIT\Jewellery\Jewellery\Jewellery.Infrastructure.Core\bin\Debug\Microsoft.Extensions.Logging.Console.xml
 C:\Workspace\GIT\Jewellery\Jewellery\Jewellery.Infrastructure.Core\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Workspace\GIT\Jewellery\Jewellery\Jewellery.Infrastructure.Core\obj\Debug\Jewellery.Infrastructure.Core.csprojResolveAssemblyReference.cache
